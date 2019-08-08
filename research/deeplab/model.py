@@ -190,19 +190,19 @@ def predict_labels(images, model_options, image_pyramid=None):
     # upsampling the logits followed by argmax, or (2) argmax followed by
     # nearest neighbor upsampling. The second option may introduce the "blocking
     # effect" but is computationally efficient.
-    if model_options.prediction_with_upsampled_logits:
-      logits = _resize_bilinear(logits,
+    #if model_options.prediction_with_upsampled_logits:
+    logits = _resize_bilinear(logits,
                                 tf.shape(images)[1:3],
                                 scales_to_logits[MERGED_LOGITS_SCOPE].dtype)
-      predictions[output] = tf.argmax(logits, 3)
-    else:
-      argmax_results = tf.argmax(logits, 3)
-      argmax_results = tf.image.resize_nearest_neighbor(
-          tf.expand_dims(argmax_results, 3),
-          tf.shape(images)[1:3],
-          align_corners=True,
-          name='resize_prediction')
-      predictions[output] = tf.squeeze(argmax_results, 3)
+    predictions[output] = logits
+    #else:
+    #  argmax_results = tf.argmax(logits, 3)
+    #  argmax_results = tf.image.resize_nearest_neighbor(
+    #      tf.expand_dims(argmax_results, 3),
+    #      tf.shape(images)[1:3],
+    #      align_corners=True,
+    #      name='resize_prediction')
+    #  predictions[output] = tf.squeeze(argmax_results, 3)
 
   return predictions
 

@@ -99,3 +99,10 @@ tutorials/embedding/text8
 tutorials/embedding/questions-words.txt
 
 samples/outreach/blogs/segmentation_blogpost/carvana-image-masking-challenge/
+
+*.png
+*.jpg
+research/deeplab/datasets/ADE20K/ADEChallengeData2016.zip
+research/deeplab/datasets/ADE20K/ADEChallengeData2016/objectInfo150.txt
+research/deeplab/datasets/ADE20K/ADEChallengeData2016/sceneCategories.txt
+research/deeplab/datasets/ADE20K/tfrecord/train-00000-of-00004.tfrecord
